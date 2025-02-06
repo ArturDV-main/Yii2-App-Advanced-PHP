@@ -6,6 +6,8 @@
     <br>
 </p>
 
+For fixing 'php/r':```docker-compose run --rm backend perl -pi -e 's/\r/\n/g' yii```
+
 Yii 2 Advanced Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
 
