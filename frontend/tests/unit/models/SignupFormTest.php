@@ -69,4 +69,32 @@ class SignupFormTest extends \Codeception\Test\Unit
         verify($model->getFirstError('email'))
             ->equals('This email address has already been taken.');
     }
+    public function testCorrectMailSend()
+    {
+        $model = new SignupForm([
+            'username' => 'dan',
+            'email' => 'dandyelf32@gmail.com',
+            'password' => '12345678',
+        ]);
+
+        $user = $model->signup();
+        verify($user)->notEmpty();
+
+        /** @var \common\models\User $user */
+        $user = $this->tester->grabRecord('common\models\User', [
+            'username' => 'dan',
+            'email' => 'dandyelf32@gmail.com',
+            'status' => \common\models\User::STATUS_INACTIVE
+        ]);
+
+        $this->tester->seeEmailIsSent();
+
+        $mail = $this->tester->grabLastSentEmail();
+
+        verify($mail)->instanceOf('yii\mail\MessageInterface');
+        verify($mail->getTo())->arrayHasKey('dandyelf32@gmail.com');
+        verify($mail->getFrom())->arrayHasKey(\Yii::$app->params['supportEmail']);
+        verify($mail->getSubject())->equals('Account registration at ' . \Yii::$app->name);
+        verify($mail->toString())->stringContainsString($user->verification_token);
+    }
 }

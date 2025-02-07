@@ -7,7 +7,28 @@
 </p>
 
 For fixing 'php/r':```docker-compose run --rm backend perl -pi -e 's/\r/\n/g' yii```
-
+    'components' => [
+        'db' => [
+            'class' => \yii\db\Connection::class,
+            'dsn' => 'pgsql:host=pgsql;dbname=yii2advanced',
+            'username' => 'yii2advanced',
+            'password' => 'secret',
+            'charset' => 'utf8',
+        ],
+        'mailer' => [
+            'class' => \yii\symfonymailer\Mailer::class,
+            'viewPath' => '@common/mail',
+            // send all mails to a file by default.
+            'useFileTransport' => false,
+            'transport' => [
+                'scheme' => 'smtp',
+                'host' => 'smtp.yandex.com',
+                'username' => 'dandyelf@yandex.ru', // Your Yandex email address
+                'password' => 'tel326399tel', // Your Yandex email password
+                'port' => 465, // Use port 587 for TLS
+                'encryption' => 'tls', // Use TLS encryption
+            ],
+            
 Yii 2 Advanced Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
 
