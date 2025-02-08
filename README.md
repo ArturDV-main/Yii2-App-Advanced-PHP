@@ -23,8 +23,8 @@ For fixing 'php/r':```docker-compose run --rm backend perl -pi -e 's/\r/\n/g' yi
             'transport' => [
                 'scheme' => 'smtp',
                 'host' => 'smtp.yandex.com',
-                'username' => 'dandyelf@yandex.ru', // Your Yandex email address
-                'password' => 'tel326399tel', // Your Yandex email password
+                'username' => '*****@yandex.ru', // Your Yandex email address
+                'password' => '******', // Your Yandex email password
                 'port' => 465, // Use port 587 for TLS
                 'encryption' => 'tls', // Use TLS encryption
             ],
