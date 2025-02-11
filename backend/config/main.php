@@ -13,6 +13,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'defaultRoute' => 'api/index',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -36,7 +37,7 @@ return [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'api/error',
         ],
         
         'urlManager' => [
