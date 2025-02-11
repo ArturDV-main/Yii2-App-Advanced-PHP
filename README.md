@@ -5,6 +5,10 @@
     <h1 align="center">Yii 2 Advanced Project Template</h1>
     <br>
 </p>
+Access it in your browser by opening
+
+- frontend: http://127.0.0.1:20080
+- backend: http://127.0.0.1:21080
 
 For fixing 'php/r':```docker-compose run --rm backend perl -pi -e 's/\r/\n/g' yii```
     'components' => [
