@@ -24,7 +24,7 @@ class ApiController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'home'],
                         'allow' => true,
                     ],
                     [
@@ -88,6 +88,11 @@ class ApiController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+
+    public function actionHome()
+    {
+        return $this->goHome();
     }
 
     /**

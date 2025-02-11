@@ -39,14 +39,11 @@ return [
         'errorHandler' => [
             'errorAction' => 'api/error',
         ],
-        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => true,
-            'rules' => [
-            ],
+            'rules' => [],
         ],
-        
     ],
     'params' => $params,
 ];
