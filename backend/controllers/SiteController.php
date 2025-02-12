@@ -12,7 +12,7 @@ use yii\web\Response;
 /**
  * Site controller
  */
-class ApiController extends Controller
+class SiteController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -62,7 +62,7 @@ class ApiController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('api');
+        return $this->render('index');
     }
 
     /**
