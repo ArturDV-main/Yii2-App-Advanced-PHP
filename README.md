@@ -7,6 +7,13 @@
 </p>
 Access it in your browser by opening
 
+GET http://localhost:21080/index.php/user HTTP/1.1
+content-type: application/json
+
+{
+    "name": "dandy",
+}
+
 - frontend: http://127.0.0.1:20080
 - backend: http://127.0.0.1:21080
 
