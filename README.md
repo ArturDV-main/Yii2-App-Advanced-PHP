@@ -7,15 +7,11 @@
 </p>
 Access it in your browser by opening
 
-GET http://localhost:21080/index.php/api-user HTTP/2.0
-content-type: application/json
-
-{
-    "name": "dandy",
-}
-
 - frontend: http://127.0.0.1:20080
 - backend: http://127.0.0.1:21080
+
+GET http://localhost:21080/index.php/api-user HTTP/2.0
+content-type: application/json
 
 For fixing 'php/r':```docker-compose run --rm backend perl -pi -e 's/\r/\n/g' yii```
     'components' => [
