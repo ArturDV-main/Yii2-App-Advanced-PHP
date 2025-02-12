@@ -7,7 +7,7 @@
 </p>
 Access it in your browser by opening
 
-GET http://localhost:21080/index.php/user HTTP/1.1
+GET http://localhost:21080/index.php/api-user HTTP/2.0
 content-type: application/json
 
 {
