@@ -20,11 +20,9 @@ class RestRecords extends Model
         if (!ArrayHelper::isAssociative($condition)) {
             throw new InvalidConfigException('"' . get_called_class() . '" must have a primary key.');
         }
-        $client = new Client(['baseUrl' => 'http://example.com/api/1.0']);
+        $client = new Client(['baseUrl' => 'http://backend/index.php/api-user']);
         $response = $client->createRequest()
-            ->setUrl('articles/search')
             ->addHeaders(['content-type' => 'application/json'])
-            ->setContent('{query_string: "Yii"}')
             ->send();
 
         echo 'Результаты поиска:<br>';

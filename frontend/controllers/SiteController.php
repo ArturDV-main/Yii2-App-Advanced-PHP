@@ -15,6 +15,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\RestRecords;
 
 /**
  * Site controller
@@ -37,7 +38,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'home'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -66,6 +67,11 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function actionHome()
+    {
+        RestRecords::findOne(['id' => 1]);
     }
 
     /**
