@@ -24,8 +24,6 @@ class RestRecords extends Model
         $response = $client->createRequest()
             ->addHeaders(['content-type' => 'application/json'])
             ->send();
-
-        echo 'Результаты поиска:<br>';
-        echo $response->content;
+        return json_decode($response->content);
     }
 }

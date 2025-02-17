@@ -69,9 +69,12 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionHome()
+    public function actionUsers()
     {
-        RestRecords::findOne(['id' => 1]);
+        $users = RestRecords::findOne(['id' => 1]);
+        return $this->render('rest', [
+            'model' => $users,
+        ]);
     }
 
     /**
