@@ -63,7 +63,6 @@ class Userrest extends RestRecords implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
 

@@ -15,7 +15,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use frontend\models\RestRecords;
+use frontend\models\Userrest;
 
 /**
  * Site controller
@@ -71,9 +71,10 @@ class SiteController extends Controller
 
     public function actionUsers()
     {
-        $users = RestRecords::findOne(['id' => 1]);
+        $username = 'dude';
+        $user = Userrest::findByUsername($username);
         return $this->render('rest', [
-            'model' => $users,
+            'model' => $user,
         ]);
     }
 

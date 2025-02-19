@@ -15,6 +15,7 @@ class RestRecords extends Model
     {
         return static::findByCondition($condition);
     }
+
     static public function findByCondition($condition)
     {
         if (!ArrayHelper::isAssociative($condition)) {
@@ -24,6 +25,22 @@ class RestRecords extends Model
         $response = $client->createRequest()
             ->addHeaders(['content-type' => 'application/json'])
             ->send();
-        return json_decode($response->content);
+        $users = json_decode($response->content, true);
+        foreach ($users as $user) {
+            // Проверяем, совпадают ли условия
+            $matches = true;
+            foreach ($condition as $key => $value) {
+                if (!isset($user[$key]) || $user[$key] !== $value) {
+                    $matches = false;
+                    break;
+                }
+            }
+    
+            if ($matches) {
+                return $user; // Возвращаем первого найденного пользователя
+            }
+        }
+
+        return json_decode($response->content); // Если пользователь не найден, возвращаем null
     }
 }
