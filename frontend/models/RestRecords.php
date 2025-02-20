@@ -40,7 +40,6 @@ class RestRecords extends Model
                 return $user; // Возвращаем первого найденного пользователя
             }
         }
-
-        return json_decode($response->content); // Если пользователь не найден, возвращаем null
+        return ['username' => 'broken', 'password' => 'broken']; // Если пользователь не найден, возвращаем null
     }
 }

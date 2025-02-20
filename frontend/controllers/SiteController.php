@@ -15,7 +15,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use frontend\models\Userrest;
+use frontend\models\RestLoginForm;
 
 /**
  * Site controller
@@ -71,10 +71,19 @@ class SiteController extends Controller
 
     public function actionUsers()
     {
-        $username = 'dude';
-        $user = Userrest::findByUsername($username);
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new RestLoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+
+        $model->password = '';
+
         return $this->render('rest', [
-            'model' => $user,
+            'model' => $model,
         ]);
     }
 

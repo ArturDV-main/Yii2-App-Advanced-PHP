@@ -7,6 +7,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 
+
 /**
  * User model
  *
@@ -22,7 +23,7 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  */
-class Userrest extends RestRecords implements IdentityInterface
+class RestUser extends RestRecords implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
@@ -82,7 +83,11 @@ class Userrest extends RestRecords implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        $user = new User();
+        $fi = static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        $user['username'] = $fi['username'];
+        $user['password'] = '12345678';
+        return $user;
     }
 
     /**
@@ -167,6 +172,7 @@ class Userrest extends RestRecords implements IdentityInterface
      */
     public function validatePassword($password)
     {
+        return false;
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 
