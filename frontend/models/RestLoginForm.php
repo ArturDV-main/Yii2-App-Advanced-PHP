@@ -73,7 +73,7 @@ class RestLoginForm extends Model
         if ($this->_user === null) {
             $this->_user = RestUser::findByUsername($this->username);
         }
-
+        
         return $this->_user;
     }
 }

@@ -40,6 +40,6 @@ class RestRecords extends Model
                 return $user; // Возвращаем первого найденного пользователя
             }
         }
-        return ['username' => 'broken', 'password' => 'broken']; // Если пользователь не найден, возвращаем null
+        return null; // Если пользователь не найден, возвращаем broken
     }
 }
