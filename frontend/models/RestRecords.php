@@ -8,8 +8,9 @@ use yii\base\Model;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\httpclient\Client;
+use yii\db\ActiveRecord;
 
-class RestRecords extends Model
+class RestRecords extends ActiveRecord
 {
     static public function findOne($condition)
     {
@@ -21,11 +22,13 @@ class RestRecords extends Model
         if (!ArrayHelper::isAssociative($condition)) {
             throw new InvalidConfigException('"' . get_called_class() . '" must have a primary key.');
         }
-        $client = new Client(['baseUrl' => 'http://backend/index.php/api-user']);
-        $response = $client->createRequest()
-            ->addHeaders(['content-type' => 'application/json'])
-            ->send();
-        $users = json_decode($response->content, true);
+        // $client = new Client(['baseUrl' => 'http://backend/index.php/api-user']);
+        // $response = $client->createRequest()
+        //     ->addHeaders(['content-type' => 'application/json'])
+        //     ->send();
+
+        $response = file_get_contents('http://backend/index.php/api-user');
+        $users = json_decode($response, true);
         foreach ($users as $user) {
             // Проверяем, совпадают ли условия
             $matches = true;

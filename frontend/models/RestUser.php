@@ -87,7 +87,7 @@ class RestUser extends RestRecords implements IdentityInterface
         $fi = static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
         $user['username'] = $fi['username'];
         $user['password_hash'] = $fi['password_hash'];
-        return $user;
+        return $fi;
     }
 
     /**
