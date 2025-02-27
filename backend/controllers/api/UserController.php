@@ -8,7 +8,7 @@ use yii\rest\ActiveController;
  * Api controller
  */
 
-class UsersController extends ActiveController
+class UserController extends ActiveController
 {
     public $modelClass = 'backend\models\User';
 }
