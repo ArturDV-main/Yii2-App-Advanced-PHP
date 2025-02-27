@@ -43,8 +43,11 @@ return [
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => true,
-            'rules' => [],
+            'showScriptName' => false,
+            'enableStrictParsing' => false,
+            'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'Users'],
+            ],
         ],
     ],
     'params' => $params,

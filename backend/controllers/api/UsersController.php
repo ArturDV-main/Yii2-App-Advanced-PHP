@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\controllers;
+namespace backend\controllers\api;
 
 use yii\rest\ActiveController;
 
@@ -8,7 +8,7 @@ use yii\rest\ActiveController;
  * Api controller
  */
 
-class ApiUserController extends ActiveController
+class UsersController extends ActiveController
 {
     public $modelClass = 'backend\models\User';
 }
