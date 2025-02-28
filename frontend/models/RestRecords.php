@@ -9,6 +9,7 @@ use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\httpclient\Client;
 use yii\db\ActiveRecord;
+use frontend\models\RestUser;
 
 class RestRecords extends ActiveRecord
 {
@@ -26,8 +27,7 @@ class RestRecords extends ActiveRecord
         // $response = $client->createRequest()
         //     ->addHeaders(['content-type' => 'application/json'])
         //     ->send();
-
-        $response = file_get_contents('http://backend/index.php/api-user');
+        $response = file_get_contents('http://backend/api/users');
         $users = json_decode($response, true);
         foreach ($users as $user) {
             // Проверяем, совпадают ли условия
@@ -40,7 +40,8 @@ class RestRecords extends ActiveRecord
             }
     
             if ($matches) {
-                return $user; // Возвращаем первого найденного пользователя
+                $U = new RestUser($user);
+                return $U; // Возвращаем первого найденного пользователя
             }
         }
         return null; // Если пользователь не найден, возвращаем broken

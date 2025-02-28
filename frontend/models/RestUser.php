@@ -83,10 +83,7 @@ class RestUser extends RestRecords implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        $user = new User();
         $fi = static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
-        $user['username'] = $fi['username'];
-        $user['password_hash'] = $fi['password_hash'];
         return $fi;
     }
 
@@ -143,8 +140,6 @@ class RestUser extends RestRecords implements IdentityInterface
      */
     public function getId()
     {
-        $request = Yii::$app->request;
-        $id = $request->get('id');
         return $this->getPrimaryKey();
     }
 
@@ -172,7 +167,6 @@ class RestUser extends RestRecords implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return false;
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 
