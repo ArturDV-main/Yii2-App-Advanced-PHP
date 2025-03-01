@@ -3,7 +3,7 @@ services:
   frontend:
     build: frontend
     ports:
-      - 20080:80
+      - 80:80
     volumes:
       # Re-use local composer cache via host-volume
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
@@ -13,7 +13,7 @@ services:
   backend:
     build: backend
     ports:
-      - 21080:80
+      - 81:80
     volumes:
       # Re-use local composer cache via host-volume
       - ~/.composer-docker/cache:/root/.composer/cache:delegated

@@ -69,24 +69,6 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionUsers()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new RestLoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-
-        return $this->render('rest', [
-            'model' => $model,
-        ]);
-    }
-
     /**
      * Displays homepage.
      *

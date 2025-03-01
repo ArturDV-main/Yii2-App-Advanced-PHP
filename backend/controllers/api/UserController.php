@@ -13,6 +13,19 @@ use backend\models\User;
 class UserController extends ActiveController
 {
     public $modelClass = 'backend\models\User';
+
+public function behaviors()
+{
+    $behaviors = parent::behaviors();
+    $behaviors['authenticator'] = [
+        'class' => CompositeAuth::class,
+        'authMethods' => [
+            HttpBearerAuth::class,
+        ],
+    ];
+    return $behaviors;
+}
+
     public function actionUsername($username)
     {
         $user = User::findByUsername($username);
