@@ -7,8 +7,8 @@
 </p>
 Access it in your browser by opening
 
-- frontend: http://127.0.0.1:20080
-- backend: http://127.0.0.1:21080
+- frontend: http://127.0.0.1:80
+- backend: http://127.0.0.1:81
 
 GET http://localhost:21080/index.php/api-user HTTP/2.0
 content-type: application/json
